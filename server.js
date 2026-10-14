@@ -7,6 +7,7 @@ import { productsRouter } from './routes/products.js'
 import { cartRouter } from './routes/cart.js'
 import { meRouter } from './routes/me.js'
 import { orderRouter } from './routes/order.js'
+import cors from 'cors'
 import { adminRouter } from './routes/admin.js'
 dotenv.config()
 
@@ -14,6 +15,13 @@ dotenv.config()
 
 const Port = process.env.PORT 
 const app = express()
+
+const allowedOrigins = ["https://verde-ecom.netlify.app/", "http://localhost:5173"]
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}))
 
 app.use(express.json())
 
@@ -23,8 +31,8 @@ app.use(session({
     resave: false,
     cookie: {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax'
+        secure: true,
+        sameSite: 'none'
     }
     
 }))
