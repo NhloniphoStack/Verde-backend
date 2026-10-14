@@ -16,7 +16,7 @@ dotenv.config()
 const Port = process.env.PORT 
 const app = express()
 
-const allowedOrigins = ["https://verde-ecom.netlify.app/", "http://localhost:5173"]
+const allowedOrigins = ["https://verde-ecom.netlify.app", "http://localhost:5173"]
 
 app.use(cors({
   origin: allowedOrigins,
